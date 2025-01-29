@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Élèves</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .management-container {
+            width: 90%;
+            max-width: 1000px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .management-container h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #333333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        table th, table td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #dddddd;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .edit-button {
+            background-color: #ffc107;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .edit-button:hover {
+            background-color: #e0a800;
+        }
+
+        .save-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .save-button:hover {
+            background-color: #218838;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="management-container">
+        <h1>Gestion des Élèves</h1>
+        <form id="student-form">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Classe</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Données dynamiques -->
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" class="form-input" value="Dupont" name="last_name_1"></td>
+                        <td><input type="text" class="form-input" value="Jean" name="first_name_1"></td>
+                        <td><input type="email" class="form-input" value="jean.dupont@example.com" name="email_1"></td>
+                        <td><input type="text" class="form-input" value="Terminale A" name="class_1"></td>
+                        <td><button type="button" class="save-button">Sauvegarder</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><input type="text" class="form-input" value="Durand" name="last_name_2"></td>
+                        <td><input type="text" class="form-input" value="Marie" name="first_name_2"></td>
+                        <td><input type="email" class="form-input" value="marie.durand@example.com" name="email_2"></td>
+                        <td><input type="text" class="form-input" value="Première B" name="class_2"></td>
+                        <td><button type="button" class="save-button">Sauvegarder</button></td>
+                    </tr>
+                    <!-- Fin des données dynamiques -->
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <script>
+        document.querySelectorAll('.save-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const row = e.target.closest('tr');
+                const inputs = row.querySelectorAll('.form-input');
+
+                // Récupérer les données des inputs
+                const data = Array.from(inputs).reduce((acc, input) => {
+                    acc[input.name] = input.value;
+                    return acc;
+                }, {});
+
+                // Exemple d'envoi vers le backend via fetch
+                console.log('Envoi des données:', data);
+                alert('Les données ont été sauvegardées avec succès !');
+            });
+        });
+    </script>
+</body>
+</html>
