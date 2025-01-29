@@ -1,10 +1,10 @@
 <?php
 // Connexion à la base de données MySQL
-$servername = "localhost";
+$servername = "mysql-db";
 $username = "root"; // Change ces valeurs selon ta configuration
-$password = "";
-$dbname = "secure_app"; // Change également ce nom de base de données
-
+$password = "root";
+$dbname = "flask_db"; // Change également ce nom de base de données
+//mysql+mysqlconnector://root:root@mysql-db:3306/flask_db
 // Crée la connexion
 $conn = new mysqli($servername, $username, $password, $dbname);
 
