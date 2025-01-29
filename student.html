@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Élèves</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 1000px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .table-container h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #333333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #dddddd;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h1>Liste des Élèves</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th> 
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Classe</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Les données ci-dessous devraient être remplies dynamiquement depuis une base de données -->
+                <tr>
+                    <td>1</td>
+                    <td>Dupont</td>
+                    <td>Jean</td>
+                    <td>Terminale C</td>
+                    <td>18/20</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Durand</td>
+                    <td>Marie</td>
+                    <td>Première B</td>
+                    <td>16/20</td>               
+                 </tr>
+                <!-- Fin des données dynamiques -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
