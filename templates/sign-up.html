@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de Connexion</title>
+    <title>Page d'Inscription</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,49 +61,43 @@
             background-color: #0056b3;
         }
 
-        .register-link {
+        .login-link {
             text-align: center;
             margin-top: 15px;
         }
 
-        .register-link a {
+        .login-link a {
             color: #007bff;
             text-decoration: none;
         }
 
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>Connexion</h2>
-        <form id="login-form">
-            <label for="identifier">Email</label>
-            <input type="email" id="identifier" name="identifier" required>
+        <h2>Inscription</h2>
+        <form action="register.php" method="POST">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required>
+
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
 
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit" class="submit-button">Se connecter</button>
-        </form>
-        <p class="register-link">Pas encore de compte ? <a href="register.html">Inscrivez-vous</a></p>
-    </div>
+            <label for="confirm-password">Confirmer le mot de passe</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
 
-    <script>
-        document.getElementById("login-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const identifier = document.getElementById("identifier").value;
-            
-            if (identifier.startsWith("admin")) {
-                window.location.href = "admin.html";
-            } else if (identifier.startsWith("teacher")) {
-                window.location.href = "Teacher.html";
-            } else {
-                window.location.href = "student.html";
-            }
-        });
-    </script>
+            <button type="submit" class="submit-button">S'inscrire</button>
+        </form>
+        <p class="login-link">Déjà un compte ? <a href="index.html">Connectez-vous</a></p>
+    </div>
 </body>
 </html>
