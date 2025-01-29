@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .dashboard-container {
+            width: 90%;
+            max-width: 1200px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: #333333;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab-button.active {
+            background-color: #0056b3;
+        }
+
+        .tab-button:hover {
+            background-color: #0056b3;
+        }
+
+        .table-container {
+            display: none;
+        }
+
+        .table-container.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        table th, table td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #dddddd;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        .save-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .save-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Tableau de Bord Admin</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="students">Gestion des Élèves</button>
+            <button class="tab-button" data-tab="teachers">Gestion des Professeurs</button>
+        </div>
+
+        <div id="students" class="table-container active">
+            <h2>Gestion des Élèves</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Classe</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" class="form-input" value="Dupont" name="last_name_1"></td>
+                        <td><input type="text" class="form-input" value="Jean" name="first_name_1"></td>
+                        <td><input type="email" class="form-input" value="jean.dupont@example.com" name="email_1"></td>
+                        <td><input type="text" class="form-input" value="Terminale A" name="class_1"></td>
+                        <td><button type="button" class="save-button">Sauvegarder</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="teachers" class="table-container">
+            <h2>Gestion des Professeurs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Matière</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" class="form-input" value="Martin" name="last_name_1"></td>
+                        <td><input type="text" class="form-input" value="Sophie" name="first_name_1"></td>
+                        <td><input type="email" class="form-input" value="sophie.martin@example.com" name="email_1"></td>
+                        <td><input type="text" class="form-input" value="Mathématiques" name="subject_1"></td>
+                        <td><button type="button" class="save-button">Sauvegarder</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-button');
+        const containers = document.querySelectorAll('.table-container');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and containers
+                tabs.forEach(t => t.classList.remove('active'));
+                containers.forEach(c => c.classList.remove('active'));
+
+                // Add active class to the clicked tab and its container
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.save-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const row = e.target.closest('tr');
+                const inputs = row.querySelectorAll('.form-input');
+
+                const data = Array.from(inputs).reduce((acc, input) => {
+                    acc[input.name] = input.value;
+                    return acc;
+                }, {});
+
+                console.log('Données sauvegardées :', data);
+                alert('Les données ont été sauvegardées avec succès !');
+            });
+        });
+    </script>
+</body>
+</html>
