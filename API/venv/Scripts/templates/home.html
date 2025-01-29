@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+</head>
+<body>
+    <h1>Bienvenue sur la page principale</h1>
+    {% if logged_in %}
+        <p>Vous êtes connecté. <a href="{{ url_for('dashboard') }}">Accéder au tableau de bord</a></p>
+        <p><a href="{{ url_for('logout') }}">Se déconnecter</a></p>
+    {% else %}
+        <p><a href="{{ url_for('login') }}">Se connecter</a> ou <a href="{{ url_for('register') }}">Créer un compte</a></p>
+    {% endif %}
+</body>
+</html>
