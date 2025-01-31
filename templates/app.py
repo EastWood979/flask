@@ -51,7 +51,7 @@ def login():
 def admin_dashboard():
     if current_user.role != 'admin':
         return redirect(url_for('login'))
-    return render_template('admin_dashboard.html')
+    return render_template('admin_dashboard.html') 
 
 @app.route('/teacher')
 @login_required
