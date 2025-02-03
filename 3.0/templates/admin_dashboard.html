@@ -8,36 +8,99 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Styles personnalisés -->
   <style>
+    /* Style global */
     body {
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
       padding: 20px;
     }
-    /* Conteneur principal en style "carte" */
+
+    /* Conteneur principal */
     .dashboard-container {
       background: #fff;
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
+    /* Titres */
     h2 {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: bold;
+      color: #343a40;
     }
+
     h4 {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+      font-weight: bold;
+      color: #495057;
     }
+
+    /* Tableau */
     table {
       margin-top: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
     }
+
+    .table thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .table tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .table tbody tr:hover {
+      background-color: #e9ecef;
+      transition: 0.3s;
+    }
+
+    /* Boutons */
     .btn {
       margin-top: 10px;
+      border-radius: 6px;
     }
+
+    .btn-warning {
+      background-color: #ffc107;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .btn-warning:hover {
+      background-color: #e0a800;
+    }
+
     .logout-btn {
       display: block;
-      margin: 20px auto 0;
+      width: 200px;
+      margin: 30px auto 0;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* Effets supplémentaires */
+    .card {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -81,7 +144,7 @@
               {% endfor %}
             {% else %}
               <tr>
-                <td colspan="4">No users found.</td>
+                <td colspan="4" class="text-center">No users found.</td>
               </tr>
             {% endif %}
           </tbody>
@@ -91,7 +154,7 @@
 
     <!-- Admin Actions -->
     <div class="text-center">
-      <a href="/logout" class="btn btn-secondary logout-btn">Logout</a>
+      <a href="/logout" class="btn btn-danger logout-btn">Logout</a>
     </div>
   </div>
 

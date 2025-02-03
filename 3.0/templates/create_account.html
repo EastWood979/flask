@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account</title>
-  <!-- Lien Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Style personnalisé -->
+  <!-- Styles personnalisés -->
   <style>
-    /* Corps de la page */
+    /* Style général */
     body {
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #007bff, #6610f2);
+      font-family: 'Arial', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -21,29 +21,71 @@
 
     /* Carte contenant le formulaire */
     .card {
-      background: #fff;
+      background: #ffffff;
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
       width: 100%;
       max-width: 500px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Animation d'apparition */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Titre centré */
     h2 {
       text-align: center;
       margin-bottom: 1.5rem;
+      font-weight: bold;
+      color: #343a40;
     }
 
-    /* Bouton en pleine largeur */
-    .btn-block {
-      width: 100%;
+    /* Champs de formulaire */
+    .form-control {
+      border-radius: 6px;
+    }
+
+    /* Boutons */
+    .btn {
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
     }
 
     /* Texte centré pour le lien de connexion */
     .login-link {
       text-align: center;
       margin-top: 1rem;
+    }
+
+    .login-link a {
+      font-weight: bold;
+      color: #007bff;
+      transition: 0.3s;
+    }
+
+    .login-link a:hover {
+      text-decoration: none;
+      color: #0056b3;
     }
   </style>
 </head>
@@ -70,7 +112,7 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS, Popper.js, and jQuery (optional, for enhanced functionality) -->
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>

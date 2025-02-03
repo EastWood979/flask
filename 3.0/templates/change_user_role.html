@@ -8,53 +8,100 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Styles personnalisés -->
   <style>
+    /* Style global */
     body {
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
     }
-    /* Conteneur centré avec une carte */
+
+    /* Conteneur principal centré */
     .card-container {
       max-width: 600px;
       margin: 50px auto;
       padding: 20px;
     }
+
+    /* Carte améliorée */
     .card {
-      background: #fff;
+      background: #ffffff;
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
     }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    /* Titres */
     h2 {
       text-align: center;
       margin-bottom: 1.5rem;
+      font-weight: bold;
+      color: #343a40;
     }
-    /* Bouton en pleine largeur */
+
+    /* Formulaire */
+    .form-group label {
+      font-weight: bold;
+      color: #495057;
+    }
+
+    .form-control {
+      border-radius: 6px;
+    }
+
+    /* Boutons */
     .btn {
-      width: 100%;
+      border-radius: 6px;
+      font-weight: bold;
     }
-    /* Lien "Back to Dashboard" centré */
-    .back-link {
-      text-align: center;
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-secondary {
       display: block;
-      margin-top: 1rem;
+      width: 100%;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Effet de transition fluide */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
   <!-- Script pour gérer l'affichage du sélecteur de classe -->
   <script>
-    // Function to toggle the class selection visibility based on the selected role
     function toggleClassSelection() {
       const roleSelect = document.getElementById("role");
       const classDiv = document.getElementById("classDiv");
-      if (roleSelect.value == "2") {  // Teacher selected
-        classDiv.style.display = "block";
-      } else {
-        classDiv.style.display = "none";
-      }
+      classDiv.style.display = roleSelect.value == "2" ? "block" : "none";
     }
   </script>
 </head>
 <body>
-  <div class="container card-container">
+  <div class="container card-container fade-in">
     <div class="card">
       <h2>Change Role for {{ user[2] }} {{ user[3] }}</h2>
       <form method="POST">
@@ -66,7 +113,8 @@
             <option value="3" {% if user[1] == 3 %}selected{% endif %}>Student</option>
           </select>
         </div>
-        <!-- Teacher class selection, shown only when 'Teacher' role is selected -->
+
+        <!-- Sélection de classe pour les enseignants -->
         <div class="form-group" id="classDiv" style="display: {% if user[1] == 2 %}block{% else %}none{% endif %};">
           <label for="class">Select Class:</label>
           <select name="class" id="class" class="form-control">
@@ -76,9 +124,10 @@
             <option value="Philosophy" {% if user[4] == 'Philosophy' %}selected{% endif %}>Philosophy</option>
           </select>
         </div>
+
         <button type="submit" class="btn btn-primary">Change Role</button>
       </form>
-      <a href="/admin_dashboard" class="btn btn-secondary back-link">Back to Dashboard</a>
+      <a href="/admin_dashboard" class="btn btn-secondary">Back to Dashboard</a>
     </div>
   </div>
 
