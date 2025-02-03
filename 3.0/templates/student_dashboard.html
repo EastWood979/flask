@@ -4,60 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <!-- Lien Bootstrap -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <!-- Style personnalisé -->
+    <!-- Styles personnalisés -->
     <style>
-        /* Réinitialisation de base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         /* Corps de la page */
         body {
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #007bff, #6610f2);
+            font-family: 'Arial', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         /* Conteneur principal */
         .dashboard-container {
-            background: #fff;
+            background: #ffffff;
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 900px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Animation d'apparition */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Titre principal */
         h2 {
             text-align: center;
             margin-bottom: 1.5rem;
+            font-weight: bold;
+            color: #343a40;
         }
 
-        /* Titres de sections (Vos notes, etc.) */
+        /* Titres de sections */
         h4 {
-            margin-top: 1rem;
             margin-bottom: 1rem;
+            font-weight: bold;
+            color: #007bff;
         }
 
-        /* Tableau Bootstrap, déjà stylé, mais on peut rajouter un léger style perso */
-        table.table {
-            margin-bottom: 1.5rem;
+        /* Tableau stylisé */
+        .table {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        /* Bouton de déconnexion centré */
+        /* Style du bouton de déconnexion */
         .logout-container {
             text-align: center;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
+
+        .btn-secondary {
+            background-color: #dc3545;
+            border: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #c82333;
+        }
+
     </style>
 </head>
 <body>
@@ -68,8 +92,8 @@
             <!-- Colonne 1 : Vos notes -->
             <div class="col-md-6">
                 <h4>Your Grades:</h4>
-                <table class="table table-striped">
-                    <thead>
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Subject</th>
                             <th>Grade</th>
@@ -85,7 +109,7 @@
                             {% endfor %}
                         {% else %}
                             <tr>
-                                <td colspan="2">No grades found.</td>
+                                <td colspan="2" class="text-center text-muted">No grades found.</td>
                             </tr>
                         {% endif %}
                     </tbody>
@@ -95,17 +119,19 @@
             <!-- Colonne 2 : Moyenne -->
             <div class="col-md-6">
                 <h4>Your Average Grade:</h4>
-                {% if average is not none %}
-                    <p>Your average grade is: {{ average }}</p>
-                {% else %}
-                    <p>No grades available to calculate average.</p>
-                {% endif %}
+                <div class="alert alert-info text-center" role="alert">
+                    {% if average is not none %}
+                        Your average grade is: <strong>{{ average }}</strong>
+                    {% else %}
+                        No grades available to calculate average.
+                    {% endif %}
+                </div>
             </div>
         </div>
 
         <!-- Bouton de déconnexion -->
         <div class="logout-container">
-            <a href="/logout" class="btn btn-secondary">Logout</a>
+            <a href="/logout" class="btn btn-secondary btn-lg">Logout</a>
         </div>
     </div>
 
