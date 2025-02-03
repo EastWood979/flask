@@ -54,7 +54,7 @@ def sign_up():
     return render_template('sign-up.html', form=form)  # Page d'inscription
 
 # Route pour la page de connexion
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         email = request.form['email']
