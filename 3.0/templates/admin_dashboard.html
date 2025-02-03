@@ -1,63 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles_admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Styles personnalisés -->
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    /* Conteneur principal en style "carte" */
+    .dashboard-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    h4 {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    table {
+      margin-top: 1rem;
+    }
+    .btn {
+      margin-top: 10px;
+    }
+    .logout-btn {
+      display: block;
+      margin: 20px auto 0;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Admin Dashboard</h2>
+  <div class="container dashboard-container">
+    <h2>Admin Dashboard</h2>
 
-        <!-- User Management -->
-        <div class="row">
-            <div class="col-md-6">
-                <h4>Users:</h4>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% if users %}
-                            {% set sorted_users = users | sort(attribute='1') %}
-                            {% for user in sorted_users %}
-                                <tr>
-                                    <td>{{ user[2] }}</td>
-                                    <td>{{ user[3] }}</td>
-                                    <td>
-                                        {% if user[1] == 1 %}Admin{% elif user[1] == 2 %}Teacher{% else %}Student{% endif %}
-                                    </td>
-                                    <td>
-                                        <a href="/admin/change_user_role/{{ user[0] }}" class="btn btn-warning">Change Role</a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        {% else %}
-                            <tr>
-                                <td colspan="4">No users found.</td>
-                            </tr>
-                        {% endif %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Admin Actions -->
-        <div>
-            <a href="/logout" class="btn btn-secondary">Logout</a>
-        </div>
+    <!-- User Management -->
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Users:</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if users %}
+              {% set sorted_users = users | sort(attribute='1') %}
+              {% for user in sorted_users %}
+                <tr>
+                  <td>{{ user[2] }}</td>
+                  <td>{{ user[3] }}</td>
+                  <td>
+                    {% if user[1] == 1 %}
+                      Admin
+                    {% elif user[1] == 2 %}
+                      Teacher
+                    {% else %}
+                      Student
+                    {% endif %}
+                  </td>
+                  <td>
+                    <a href="/admin/change_user_role/{{ user[0] }}" class="btn btn-warning">Change Role</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="4">No users found.</td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery (optional, for enhanced functionality) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Admin Actions -->
+    <div class="text-center">
+      <a href="/logout" class="btn btn-secondary logout-btn">Logout</a>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery (pour des fonctionnalités améliorées) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

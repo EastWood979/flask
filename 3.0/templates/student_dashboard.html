@@ -4,13 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
+    <!-- Lien Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Style personnalisé -->
+    <style>
+        /* Réinitialisation de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Corps de la page */
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Conteneur principal */
+        .dashboard-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Titre principal */
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Titres de sections (Vos notes, etc.) */
+        h4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Tableau Bootstrap, déjà stylé, mais on peut rajouter un léger style perso */
+        table.table {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Bouton de déconnexion centré */
+        .logout-container {
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="dashboard-container">
         <h2>Student Dashboard</h2>
 
         <div class="row">
+            <!-- Colonne 1 : Vos notes -->
             <div class="col-md-6">
                 <h4>Your Grades:</h4>
                 <table class="table table-striped">
@@ -37,6 +92,7 @@
                 </table>
             </div>
 
+            <!-- Colonne 2 : Moyenne -->
             <div class="col-md-6">
                 <h4>Your Average Grade:</h4>
                 {% if average is not none %}
@@ -47,12 +103,13 @@
             </div>
         </div>
 
-        <div>
+        <!-- Bouton de déconnexion -->
+        <div class="logout-container">
             <a href="/logout" class="btn btn-secondary">Logout</a>
         </div>
     </div>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery (optional, for enhanced functionality) -->
+    <!-- Bootstrap JS, Popper.js, et jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>

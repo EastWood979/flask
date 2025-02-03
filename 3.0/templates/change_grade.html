@@ -1,18 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Change Grade</title>
+  <meta charset="UTF-8">
+  <title>Change Grade</title>
+  <style>
+    /* Réinitialisation de base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Style global du body */
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Conteneur principal (carte) */
+    .card-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    /* Titres */
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    /* Style du formulaire */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Lien de retour centré */
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+  <div class="card-container">
     <h1>Change Grade for Student</h1>
     <h2>{{ student_id }} - Class: {{ class_name }}</h2>
 
     <form method="POST">
-        <label for="grade">New Grade:</label>
-        <input type="text" id="grade" name="grade" value="{{ grade[0] }}" required>
-        <button type="submit">Update Grade</button>
+      <label for="grade">New Grade:</label>
+      <input type="text" id="grade" name="grade" value="{{ grade[0] }}" required>
+      <button type="submit">Update Grade</button>
     </form>
 
     <a href="{{ url_for('teacher_dashboard') }}">Back to Dashboard</a>
+  </div>
 </body>
 </html>

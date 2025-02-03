@@ -1,57 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change User Role</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script>
-        // Function to toggle the class selection visibility based on the selected role
-        function toggleClassSelection() {
-            const roleSelect = document.getElementById("role");
-            const classDiv = document.getElementById("classDiv");
-            if (roleSelect.value == "2") {  // Teacher selected
-                classDiv.style.display = "block";
-            } else {
-                classDiv.style.display = "none";
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change User Role</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Styles personnalisés -->
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    /* Conteneur centré avec une carte */
+    .card-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    /* Bouton en pleine largeur */
+    .btn {
+      width: 100%;
+    }
+    /* Lien "Back to Dashboard" centré */
+    .back-link {
+      text-align: center;
+      display: block;
+      margin-top: 1rem;
+    }
+  </style>
+  <!-- Script pour gérer l'affichage du sélecteur de classe -->
+  <script>
+    // Function to toggle the class selection visibility based on the selected role
+    function toggleClassSelection() {
+      const roleSelect = document.getElementById("role");
+      const classDiv = document.getElementById("classDiv");
+      if (roleSelect.value == "2") {  // Teacher selected
+        classDiv.style.display = "block";
+      } else {
+        classDiv.style.display = "none";
+      }
+    }
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h2>Change Role for {{ user[2] }} {{ user[3] }}</h2>
-
-        <form method="POST">
-            <div class="form-group">
-                <label for="role">Select New Role:</label>
-                <select name="role" id="role" class="form-control" required onchange="toggleClassSelection()">
-                    <option value="1" {% if user[1] == 1 %}selected{% endif %}>Admin</option>
-                    <option value="2" {% if user[1] == 2 %}selected{% endif %}>Teacher</option>
-                    <option value="3" {% if user[1] == 3 %}selected{% endif %}>Student</option>
-                </select>
-            </div>
-
-            <!-- Teacher class selection, shown only when 'Teacher' role is selected -->
-            <div class="form-group" id="classDiv" style="display: {% if user[1] == 2 %}block{% else %}none{% endif %};">
-                <label for="class">Select Class:</label>
-                <select name="class" id="class" class="form-control">
-                    <option value="Math" {% if user[4] == 'Math' %}selected{% endif %}>Math</option>
-                    <option value="History" {% if user[4] == 'History' %}selected{% endif %}>History</option>
-                    <option value="English" {% if user[4] == 'English' %}selected{% endif %}>English</option>
-                    <option value="Philosophy" {% if user[4] == 'Philosophy' %}selected{% endif %}>Philosophy</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Change Role</button>
-        </form>
-
-        <a href="/admin_dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+  <div class="container card-container">
+    <div class="card">
+      <h2>Change Role for {{ user[2] }} {{ user[3] }}</h2>
+      <form method="POST">
+        <div class="form-group">
+          <label for="role">Select New Role:</label>
+          <select name="role" id="role" class="form-control" required onchange="toggleClassSelection()">
+            <option value="1" {% if user[1] == 1 %}selected{% endif %}>Admin</option>
+            <option value="2" {% if user[1] == 2 %}selected{% endif %}>Teacher</option>
+            <option value="3" {% if user[1] == 3 %}selected{% endif %}>Student</option>
+          </select>
+        </div>
+        <!-- Teacher class selection, shown only when 'Teacher' role is selected -->
+        <div class="form-group" id="classDiv" style="display: {% if user[1] == 2 %}block{% else %}none{% endif %};">
+          <label for="class">Select Class:</label>
+          <select name="class" id="class" class="form-control">
+            <option value="Math" {% if user[4] == 'Math' %}selected{% endif %}>Math</option>
+            <option value="History" {% if user[4] == 'History' %}selected{% endif %}>History</option>
+            <option value="English" {% if user[4] == 'English' %}selected{% endif %}>English</option>
+            <option value="Philosophy" {% if user[4] == 'Philosophy' %}selected{% endif %}>Philosophy</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Change Role</button>
+      </form>
+      <a href="/admin_dashboard" class="btn btn-secondary back-link">Back to Dashboard</a>
     </div>
+  </div>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery (optional, for enhanced functionality) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap JS, Popper.js, and jQuery (pour des fonctionnalités améliorées) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
