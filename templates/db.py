@@ -15,9 +15,9 @@ def get_db():
 @app.route("/")
 def index():
     cur = get_db().cursor()
-    cur.execute("SELECT * FROM voitures")  # Remplace 'voitures' par le nom de ta table
+    cur.execute("SELECT * FROM student")  # Remplace 'voitures' par le nom de ta table
     voitures = cur.fetchall()
-    return render_template("index.html", voitures=voitures)
+    return render_template("student.html", voitures=voitures)
 
 @app.teardown_appcontext
 def close_connection(exception):
