@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Grade</title>
+</head>
+<body>
+    <h1>Change Grade for Student</h1>
+    <h2>{{ student_id }} - Class: {{ class_name }}</h2>
+
+    <form method="POST">
+        <label for="grade">New Grade:</label>
+        <input type="text" id="grade" name="grade" value="{{ grade[0] }}" required>
+        <button type="submit">Update Grade</button>
+    </form>
+
+    <a href="{{ url_for('teacher_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
