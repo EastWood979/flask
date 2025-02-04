@@ -81,11 +81,14 @@ def dashboard():
         students = User.query.filter_by(role='eleve').all()
         teachers = User.query.filter_by(role='professeur').all()
         return render_template('admin_page.html', students=students, teachers=teachers)
+    
     elif user.role == 'professeur':
         students = User.query.filter_by(role='eleve').all()
         return render_template('prof.html', students=students)
+    
     elif user.role == 'eleve':
         return render_template('student.html', student=user)
+    
     else:
         flash('Accès non autorisé.', 'danger')
         return redirect(url_for('index'))
