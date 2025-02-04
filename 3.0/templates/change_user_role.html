@@ -115,7 +115,8 @@
         </div>
 
         <!-- Sélection de classe pour les enseignants -->
-        <div class="form-group" id="classDiv" style="display: <div class="form-group" id="classDiv" style="display: {% if user[1] == 2 %}block{% else %}none{% endif %};">
+        <div class="form-group" id="classDiv" {% if user[1] = 2 %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+        </div>
           ;">
           <label for="class">Select Class:</label>
           <select name="class" id="class" class="form-control">

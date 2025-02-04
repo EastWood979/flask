@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(to right, #007bff, #6610f2);
+            background: linear-gradient(to right, #007bff, #8940fe);
             font-family: 'Arial', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -79,7 +79,7 @@
         }
 
         .btn-secondary {
-            background-color: #dc3545;
+            background-color: #007bff;
             border: none;
             font-weight: 500; /* Slightly lighter font-weight */
             padding: 0.8rem 1.75rem; /* Adjusted padding */
@@ -88,7 +88,7 @@
         }
 
         .btn-secondary:hover {
-            background-color: #c82333;
+            background-color: #007;
         }
     </style>
 </head>
@@ -98,7 +98,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h4>Your Grades:</h4>
+                <h4>Your Grades :</h4>
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
@@ -124,7 +124,7 @@
             </div>
 
             <div class="col-md-6">
-                <h4>Your Average Grade:</h4>
+                <h4>Your Average Grade :</h4>
                 <div class="alert alert-info text-center" role="alert">
                     {% if average is not none %}
                         Your average grade is: <strong>{{ average }}</strong>
