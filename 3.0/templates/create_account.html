@@ -1,120 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Styles personnalisés -->
-  <style>
-    /* Style général */
-    body {
-      background: linear-gradient(to right, #007bff, #6610f2);
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #007bff, #6610f2);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-    /* Carte contenant le formulaire */
-    .card {
-      background: #ffffff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 500px;
-      animation: fadeIn 0.5s ease-in-out;
-    }
+        .card {
+            background: #ffffff;
+            padding: 3rem; /* Increased padding */
+            border-radius: 15px; /* Increased border-radius */
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+            width: 100%;
+            max-width: 450px; /* Slightly reduced max-width */
+            animation: fadeIn 0.5s ease-in-out;
+        }
 
-    /* Animation d'apparition */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-15px); /* Increased translateY */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    /* Titre centré */
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-weight: bold;
-      color: #343a40;
-    }
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem; /* Increased margin-bottom */
+            font-weight: 600; /* Slightly lighter font-weight */
+            color: #343a40;
+        }
 
-    /* Champs de formulaire */
-    .form-control {
-      border-radius: 6px;
-    }
+        .form-group {
+            margin-bottom: 1.5rem; /* Increased margin between form groups */
+        }
 
-    /* Boutons */
-    .btn {
-      border-radius: 6px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+        label {
+            font-weight: 500; /* Slightly lighter font-weight for labels */
+            color: #555; /* Slightly darker color for labels */
+        }
 
-    .btn-primary {
-      background-color: #007bff;
-      border: none;
-    }
+        .form-control {
+            border-radius: 8px; /* Increased border-radius */
+            padding: 1rem; /* Increased padding */
+            border: 1px solid #ced4da; /* Added border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle box-shadow on input */
+        }
 
-    .btn-primary:hover {
-      background-color: #0056b3;
-    }
+        .btn {
+            border-radius: 8px; /* Increased border-radius */
+            font-weight: 500; /* Slightly lighter font-weight */
+            padding: 0.8rem 1.5rem; /* Adjusted padding */
+            transition: 0.3s;
+        }
 
-    /* Texte centré pour le lien de connexion */
-    .login-link {
-      text-align: center;
-      margin-top: 1rem;
-    }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
 
-    .login-link a {
-      font-weight: bold;
-      color: #007bff;
-      transition: 0.3s;
-    }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
 
-    .login-link a:hover {
-      text-decoration: none;
-      color: #0056b3;
-    }
-  </style>
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem; /* Increased margin-top */
+        }
+
+        .login-link a {
+            font-weight: 500; /* Slightly lighter font-weight */
+            color: #007bff;
+            transition: 0.3s;
+        }
+
+        .login-link a:hover {
+            text-decoration: none;
+            color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h2>Create Account</h2>
-    <form action="/create_account" method="POST">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="surname">Surname:</label>
-        <input type="text" id="surname" name="surname" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-    </form>
-    <div class="login-link">
-      <p>Already have an account? <a href="/login">Login here</a>.</p>
+    <div class="card">
+        <h2>Create Account</h2>
+        <form action="/create_account" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="/login">Login here</a>.</p>
+        </div>
     </div>
-  </div>
 
-  <!-- Bootstrap JS, Popper.js, and jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
