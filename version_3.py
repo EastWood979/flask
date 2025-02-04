@@ -2,6 +2,7 @@ import sqlite3
 import os
 from flask import Flask, render_template, request, redirect, url_for, session
 
+
 app = Flask(__name__)
 # Set a secret key for session management
 app.secret_key = 'your_secret_key_here'
