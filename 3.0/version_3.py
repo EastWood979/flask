@@ -60,25 +60,28 @@ def home():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+
     if request.method == 'POST':
+
         name = request.form['name']
         surname = request.form['surname']
         password = request.form['password']
-
+        
         conn = sqlite3.connect('school.db')
         cursor = conn.cursor()
-
+        
         cursor.execute('''
             SELECT * FROM users WHERE name = ? AND surname = ? AND password = ?
         ''', (name, surname, password))
         user = cursor.fetchone()
-
+        
         if user:
             session['user_id'] = user[0]
             session['user_key'] = user[1]
             session['user_name'] = user[2]
             session['user_surname'] = user[3]
-
+            print("Session Data:", session)
+           
             if user[1] == 1:
                 return redirect(url_for('admin_dashboard'))
             elif user[1] == 2:
@@ -124,6 +127,7 @@ def change_user_role(user_id):
 
 @app.route('/admin_dashboard')
 def admin_dashboard():
+
     if 'user_id' not in session or session['user_key'] != 1:
         return redirect(url_for('login'))
 
